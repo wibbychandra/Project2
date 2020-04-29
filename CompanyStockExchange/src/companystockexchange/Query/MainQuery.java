@@ -10,6 +10,8 @@ package companystockexchange.Query;
  * @author Wibby Chandra
  */
 public class MainQuery {
+//    public String data = "Select * from pemegang WHERE id_pemegang=?;"
+    public String login = "Select * from login WHERE username=? and password=?";
     public String create = "INSERT INTO pemegang (nama, tanggal_catat, "
             +"banyak_lembar, presentase, harga_jual) VALUES (?,?,?,?,?)";
     

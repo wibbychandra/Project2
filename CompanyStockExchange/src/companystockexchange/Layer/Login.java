@@ -7,6 +7,8 @@ package companystockexchange.Layer;
 
 import com.mysql.jdbc.Connection;
 import companystockexchange.Connection.DBConnection;
+import companystockexchange.Controller.MainController;
+import companystockexchange.Query.MainQuery;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -38,7 +40,6 @@ public class Login extends javax.swing.JFrame {
         tf_username = new javax.swing.JTextField();
         tf_password = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
-        btn_admin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,17 +53,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btn_login.setText("login ntar");
+        btn_login.setText("Login skuy");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
-            }
-        });
-
-        btn_admin.setText("Admin");
-        btn_admin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_adminActionPerformed(evt);
             }
         });
 
@@ -71,21 +65,16 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tf_username, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(btn_login)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_admin)))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_login)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tf_username, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tf_password, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,11 +88,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tf_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_login)
-                    .addComponent(btn_admin))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(btn_login)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,18 +103,25 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
         Profile profile = new Profile();
-        DBConnection koneksi = new DBConnection();
+        Admin admin = new Admin();
         try{
-            Connection con = koneksi.open();
-            String login = "Select * from login WHERE username=? and password=?";
-            PreparedStatement pst = con.prepareStatement(login);
-            pst.setString(1, tf_username.getText());
-            pst.setString(2, tf_password.getText());
-            ResultSet rs = pst.executeQuery();
+            String username = tf_username.getText();
+            String password = new String(tf_password.getPassword());
+            
+            MainController mc = new MainController();
+            ResultSet rs = mc.login(username, password);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Successfully Login");
-                profile.setVisible(true);
-                this.setVisible(false);
+                String tipe = rs.getString("tipe_user");
+                if(tipe.equalsIgnoreCase("admin")){
+                    JOptionPane.showMessageDialog(null, "Successfully Login");
+                    admin.setVisible(true);
+                    this.dispose();
+                }
+                if(tipe.equalsIgnoreCase("shareholders")){
+                    JOptionPane.showMessageDialog(null, "Successfully Login");
+                    profile.setVisible(true);
+                    this.dispose();
+                }
             }
             else {
                 JOptionPane.showMessageDialog(null, "Login Unsuccessful, "
@@ -135,41 +129,11 @@ public class Login extends javax.swing.JFrame {
                 tf_username.setText("");
                 tf_password.setText("");
             }
-            con.close();
         }
         catch (Exception e){
             System.out.println(e);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
-
-    private void btn_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminActionPerformed
-        // TODO add your handling code here:
-        Admin admin = new Admin();
-        DBConnection koneksi = new DBConnection();
-        try{
-            Connection con = koneksi.open();
-            String login = "Select * from login WHERE username=? and password=?";
-            PreparedStatement pst = con.prepareStatement(login);
-            pst.setString(1, tf_username.getText());
-            pst.setString(2, tf_password.getText());
-            ResultSet rs = pst.executeQuery();
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Successfully Login");
-                admin.setVisible(true);
-                this.setVisible(false);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Login Unsuccessful, "
-                        + "Please Check Your Username and Password");
-                tf_username.setText("");
-                tf_password.setText("");
-            }
-            con.close();
-        }
-        catch (Exception e){
-            System.out.println(e);
-        }
-    }//GEN-LAST:event_btn_adminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,7 +171,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_admin;
     private javax.swing.JButton btn_login;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

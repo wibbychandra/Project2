@@ -33,8 +33,8 @@ public class Admin extends javax.swing.JFrame {
         getAllData();
         clear();
     }
-        public void getAllData(){
-        this.rs = controller.getShareHolder();
+    public void getAllData(){
+        this.rs = controller.getShareHolders();
         loadtable(this.rs);
     }
     
@@ -71,6 +71,7 @@ public class Admin extends javax.swing.JFrame {
         btn_cariid = new javax.swing.JButton();
         btn_carinama = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        btn_logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +131,11 @@ public class Admin extends javax.swing.JFrame {
         });
 
         btn_cariid.setText("Search by ID");
+        btn_cariid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cariidActionPerformed(evt);
+            }
+        });
 
         btn_carinama.setText("Search by Name");
         btn_carinama.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +145,13 @@ public class Admin extends javax.swing.JFrame {
         });
 
         jLabel6.setText("Search");
+
+        btn_logout.setText("Log Out");
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,13 +194,19 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_logout)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
+                        .addComponent(btn_logout)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(tf_namaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,9 +226,7 @@ public class Admin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(tf_hargajualadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_tambahdata)
@@ -338,10 +355,22 @@ public class Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tb_listMouseClicked
 
+    private void btn_cariidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariidActionPerformed
+        // TODO add your handling code here:
+        search("id", tf_cari.getText());
+    }//GEN-LAST:event_btn_cariidActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
     public void search(String type, String query){
         try{
             if(query.isEmpty()){
-                this.rs = controller.getShareHolder();
+                this.rs = controller.getShareHolders();
             }
             else if(type.equals("id") && !query.isEmpty()){
                 this.rs = controller.showById(query);
@@ -406,6 +435,7 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cariid;
     private javax.swing.JButton btn_carinama;
+    private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_mengahpusdata;
     private javax.swing.JButton btn_tambahdata;
     private javax.swing.JButton btn_updatedata;

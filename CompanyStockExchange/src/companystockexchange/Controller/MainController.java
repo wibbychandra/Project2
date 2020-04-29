@@ -21,6 +21,16 @@ public class MainController extends BaseController{
     Helper helper = new Helper();
     MainQuery query = new MainQuery();
     
+    public ResultSet login(String username, String password){
+        String sql = this.query.login;
+        
+        Map<Integer, Object> map = new HashMap<>();
+        map.put(1, username);
+        map.put(2, password);
+        
+        return this.getWithParameter(map, sql);
+    }
+    
     public boolean create(MainModel model) throws ParseException{
         String date = helper.parseDateToString(model.getTanggal());
         
@@ -36,7 +46,7 @@ public class MainController extends BaseController{
         return this.preparedStatement(map, sql);
     }
     
-    public ResultSet getShareHolder(){
+    public ResultSet getShareHolders(){
         String sql = this.query.getShareholder;
         return this.get(sql);
     }

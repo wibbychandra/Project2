@@ -164,7 +164,7 @@ public class Shareholders extends javax.swing.JFrame {
         // TODO add your handling code here:
         Profile profile = new Profile();
         profile.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
