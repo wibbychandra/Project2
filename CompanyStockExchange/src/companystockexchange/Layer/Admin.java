@@ -11,8 +11,7 @@ import companystockexchange.Model.MainModel;
 import java.sql.ResultSet;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
-
+import net.proteanit.sql.DbUtils;   
 /**
  *
  * @author Wibby Chandra
@@ -61,7 +60,6 @@ public class Admin extends javax.swing.JFrame {
         tf_perlembaradmin = new javax.swing.JTextField();
         tf_persenadmin = new javax.swing.JTextField();
         tf_hargajualadmin = new javax.swing.JTextField();
-        dp_tanggaladmin = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_list = new javax.swing.JTable();
         btn_updatedata = new javax.swing.JButton();
@@ -72,6 +70,7 @@ public class Admin extends javax.swing.JFrame {
         btn_carinama = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         btn_logout = new javax.swing.JButton();
+        dp_tanggaladmin = new org.jdesktop.swingx.JXDatePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,6 +152,12 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
+        dp_tanggaladmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_tanggaladminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,11 +174,11 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_namaadmin)
-                            .addComponent(dp_tanggaladmin, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                            .addComponent(tf_namaadmin, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                             .addComponent(tf_perlembaradmin)
                             .addComponent(tf_persenadmin)
-                            .addComponent(tf_hargajualadmin)))
+                            .addComponent(tf_hargajualadmin)
+                            .addComponent(dp_tanggaladmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_tambahdata)
                         .addGap(61, 61, 61)
@@ -211,9 +216,9 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(tf_namaadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dp_tanggaladmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(dp_tanggaladmin, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -236,7 +241,7 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(tf_cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cariid)
                     .addComponent(btn_carinama))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -366,6 +371,10 @@ public class Admin extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void dp_tanggaladminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_tanggaladminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dp_tanggaladminActionPerformed
 
     public void search(String type, String query){
         try{

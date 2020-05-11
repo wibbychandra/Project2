@@ -47,7 +47,6 @@ public class SalePurchase extends javax.swing.JFrame {
         tf_persenpenjualan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(886, 556));
 
         tb_tabelpenjualan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,6 +121,11 @@ public class SalePurchase extends javax.swing.JFrame {
         });
 
         jButton2.setText("Buy this Shares");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Shareholding Percentage in %");
 
@@ -167,7 +171,7 @@ public class SalePurchase extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(tf_hargajualpenjualan)
                                             .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-                                        .addGap(0, 64, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jButton2)
                                         .addGap(156, 156, 156))))
@@ -228,6 +232,10 @@ public class SalePurchase extends javax.swing.JFrame {
         profile.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_keprofileActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

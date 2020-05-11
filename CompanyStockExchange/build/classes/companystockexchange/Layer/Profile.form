@@ -176,11 +176,17 @@
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_dateprofileActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_sallshares">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sell Your Shares"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_sallsharesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_tosaleshares">
       <Properties>

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package companystockexchange.Layer;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Wibby Chandra
@@ -72,8 +72,18 @@ public class Profile extends javax.swing.JFrame {
         tf_percentageprofile.setEditable(false);
 
         dp_dateprofile.setEditable(false);
+        dp_dateprofile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_dateprofileActionPerformed(evt);
+            }
+        });
 
         btn_sallshares.setText("Sell Your Shares");
+        btn_sallshares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_sallsharesActionPerformed(evt);
+            }
+        });
 
         btn_tosaleshares.setText("List of Sale Shares");
         btn_tosaleshares.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +221,21 @@ public class Profile extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void dp_dateprofileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_dateprofileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dp_dateprofileActionPerformed
+
+    private void btn_sallsharesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sallsharesActionPerformed
+        // TODO add your handling code here:
+        SellShare ss = new SellShare();
+        int opsi = JOptionPane.showConfirmDialog(null, "Are You Sure Want To"
+                + " Sell?","Selling Shares", JOptionPane.YES_NO_OPTION);
+        if (opsi == JOptionPane.YES_OPTION)
+            ss.setVisible(true);
+        else
+            this.dispose();
+    }//GEN-LAST:event_btn_sallsharesActionPerformed
 
     /**
      * @param args the command line arguments

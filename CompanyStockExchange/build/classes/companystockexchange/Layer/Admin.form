@@ -36,11 +36,11 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tf_namaadmin" alignment="0" max="32767" attributes="0"/>
-                          <Component id="dp_tanggaladmin" alignment="0" pref="244" max="32767" attributes="0"/>
+                          <Component id="tf_namaadmin" alignment="0" pref="244" max="32767" attributes="0"/>
                           <Component id="tf_perlembaradmin" alignment="0" max="32767" attributes="0"/>
                           <Component id="tf_persenadmin" alignment="0" max="32767" attributes="0"/>
                           <Component id="tf_hargajualadmin" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dp_tanggaladmin" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -89,9 +89,9 @@
                           <Component id="tf_namaadmin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="dp_tanggaladmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dp_tanggaladmin" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -121,7 +121,7 @@
                   <Component id="btn_cariid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_carinama" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="68" max="32767" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,8 +162,6 @@
     <Component class="javax.swing.JTextField" name="tf_persenadmin">
     </Component>
     <Component class="javax.swing.JTextField" name="tf_hargajualadmin">
-    </Component>
-    <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_tanggaladmin">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -242,6 +240,11 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_logoutActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_tanggaladmin">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_tanggaladminActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
